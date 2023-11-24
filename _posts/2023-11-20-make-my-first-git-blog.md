@@ -7,7 +7,7 @@ article_header:
     src: assets/images/2023-11-20-make-my-first-git-blog/1.png
 ---
 
-# Introduction
+## Introduction
 
 I have decided to write my tech blog from now on.
 To improve my English skills, all of my content is written in English.

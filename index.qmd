@@ -1,5 +1,5 @@
 ---
-title: "mqjinwon's blog"
+title: "진원 블로그"
 listing:
   contents: posts
   sort: "date desc"

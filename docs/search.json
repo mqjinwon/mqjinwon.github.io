@@ -1,10 +1,17 @@
 [
   {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
+    "objectID": "posts/240608_quarto_intro/index.html",
+    "href": "posts/240608_quarto_intro/index.html",
+    "title": "Quarto 소개",
     "section": "",
-    "text": "This is a post with executable code."
+    "text": "나만의 기술 블로그 만들기\n\n정연님이 추천해주신 블로그 템플릿을 사용해서, 나만의 블로그를 만들어보고자 한다.\n아래의 레퍼런스를 따라서 제작한 상황이다. 아직 안 예뻐서 하나씩 고쳐나가야할 것 같다.\n\nReference\nhttps://curieuxjy.github.io/posts/code/2024-01-07-quarto-blog.html"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "진원 블로그",
+    "section": "",
+    "text": "Quarto 소개\n\n\n\n\n\n\nblog\n\n\nwrite\n\n\n\n\n\n\n\n\n\nJun 8, 2024\n\n\n김진원\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -12,19 +19,5 @@
     "title": "About",
     "section": "",
     "text": "About this blog"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "mqjinwon’s blog",
-    "section": "",
-    "text": "Post With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nJun 8, 2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nJun 5, 2024\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
-    "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
   }
 ]

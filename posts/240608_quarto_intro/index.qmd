@@ -1,0 +1,20 @@
+---
+title: "Quarto 소개"
+author: "김진원"
+date: "2024-06-08"
+categories: [blog, write]
+---
+
+나만의 기술 블로그 만들기
+
+---
+
+정연님이 추천해주신 블로그 템플릿을 사용해서, 나만의 블로그를 만들어보고자 한다.
+
+아래의 레퍼런스를 따라서 제작한 상황이다.
+아직 안 예뻐서 하나씩 고쳐나가야할 것 같다.
+
+
+### Reference
+
+https://curieuxjy.github.io/posts/code/2024-01-07-quarto-blog.html

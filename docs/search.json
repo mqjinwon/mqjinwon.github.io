@@ -1,17 +1,45 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "진원 블로그",
+    "section": "",
+    "text": "LiDAR 하드웨어 개요\n\n\n\n\n\n\nlidar\n\n\nsensor\n\n\n\n\n\n\n\n\n\nJul 6, 2024\n\n\n김진원\n\n\n\n\n\n\n\n\n\n\n\n\nQuarto 소개\n\n\n\n\n\n\nblog\n\n\nwrite\n\n\n\n\n\n\n\n\n\nJun 8, 2024\n\n\n김진원\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/240706_lidar/index.html",
+    "href": "posts/240706_lidar/index.html",
+    "title": "LiDAR 하드웨어 개요",
+    "section": "",
+    "text": "라이다의 종류에 대해서 알아보자"
+  },
+  {
+    "objectID": "posts/240706_lidar/index.html#라이다-개요",
+    "href": "posts/240706_lidar/index.html#라이다-개요",
+    "title": "LiDAR 하드웨어 개요",
+    "section": "라이다 개요",
+    "text": "라이다 개요\n\n\n\nimage-20240706125128213\n\n\n라이다는 기본적으로 Laser, Recevier, Processor로 구성되어 있다.\n\n\n\nimage-20240706125215236\n\n\nLaser에서 빛을 쏘고, 이 빛이 장애물에 반사가 되면, Receiver가 빛을 받는다. 이때 거리를 측정하기 위해, 빛의 속도와 시간을 이용한다. 이 기술을 TOF(Time of Flight) 라 부른다. \\[\nc = speed\\ of\\ light \\\\\nd = t*c/2\n\\]"
+  },
+  {
+    "objectID": "posts/240706_lidar/index.html#고려해야하는-사항-spec",
+    "href": "posts/240706_lidar/index.html#고려해야하는-사항-spec",
+    "title": "LiDAR 하드웨어 개요",
+    "section": "고려해야하는 사항 (Spec)",
+    "text": "고려해야하는 사항 (Spec)\n1. FOV (Field of View)\n\n\n\nimage-20240706130703528\n\n\n\n어느정도의 영역을 커버할 수 있는 가를 말함\n\n2. Range\n3. Resolution\n4. accuary"
+  },
+  {
+    "objectID": "posts/240706_lidar/index.html#라이다의-타입",
+    "href": "posts/240706_lidar/index.html#라이다의-타입",
+    "title": "LiDAR 하드웨어 개요",
+    "section": "라이다의 타입",
+    "text": "라이다의 타입\n3D 라이다는 다양한 타입의 모델이 존재한다.\n\nSpinning type\n\n\n\nimage-20240706130805126\n\n\n\n위 그림과 같이 센서들이 수직으로 배열되어 있으며, 모터가 센서를 회전시켜가면서 값을 취득하는 방법이다.\n이는 수직으로 배열된 레이저 모듈이기에 거리가 증가함에 따라 point의 밀도는 점차적으로 줄어든다.\ndetection range와 resolution을 증가시키기 위한 한가지 방법은 transmit-receive 모듈을 추가하는 것이다.\n센서의 수가 늘어날수록, calibration을 하기가 힘들어져 비용이 기하급수적으로 증가한다.\n\nHybrid solid-state LiDAR\n\n\n\nPeek 2024-07-06 13-15\n\n\n\n제한된 각도로 회전하는 두개의 거울을 사용한다.\n폴리곤 거울은 회전하며 레이저가 수평으로 스캔되도록 하고, 위아래로 흔들리는 거울을 레이저 빔을 수직으로 굴절시킨다.\nspinning type에 비해서 매우 높은 hz가 필요하다. 즉 잘 고장날 가능성이 높다.\n\nMEMS module LiDAR\n\n\n\ntest-product\n\n\n\nMEMS 시스템을 통해 고주파로 회전하며 레이저 빔을 반사하는 방식임.\nRecevier가 먼 거리의 물체를 감지하기 위해서는 충분한 빛을 받아야하기에 먼 거리의 값을 측정하기 어렵다.\n거울이 커질수록 고주파의 진동을 견디기 어렵다.\n내구성 문제가 있다.\n제한된 회전각도로 인해 FOV가 낮다.\n\nSolid-state LiDAR\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nASIC 기술을 통해 수백개의 레이저 모듈을 단일 칩에 통합시켜 만든 LiDAR이다.\n이는 뛰어난 거리 측정 해상도와 정확성을 제공하며, 단순화된 제조를 통해 효율성과 일관성을 높인다.\n\n\n\nReference\nhttps://www.youtube.com/watch?v=3EehCU3csJQ&t=18s\n\n\nImage credit\nhttps://preciseley.com/product/mems-scanning-mirror/\nhttps://www.hesaitech.com/things-you-need-to-know-about-lidar-solid-state-and-hybrid-solid-state-whats-the-difference/"
+  },
+  {
     "objectID": "posts/240608_quarto_intro/index.html",
     "href": "posts/240608_quarto_intro/index.html",
     "title": "Quarto 소개",
     "section": "",
     "text": "나만의 기술 블로그 만들기\n\n정연님이 추천해주신 블로그 템플릿을 사용해서, 나만의 블로그를 만들어보고자 한다.\n아래의 레퍼런스를 따라서 제작한 상황이다. 아직 안 예뻐서 하나씩 고쳐나가야할 것 같다.\n\nReference\nhttps://curieuxjy.github.io/posts/code/2024-01-07-quarto-blog.html"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "진원 블로그",
-    "section": "",
-    "text": "Quarto 소개\n\n\n\n\n\n\nblog\n\n\nwrite\n\n\n\n\n\n\n\n\n\nJun 8, 2024\n\n\n김진원\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",

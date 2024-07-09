@@ -18,4 +18,4 @@ image: https://quarto.org/quarto.png
 
 ### Reference
 
-https://curieuxjy.github.io/posts/code/2024-01-07-quarto-blog.html
+[https://curieuxjy.github.io/posts/code/2024-01-07-quarto-blog.html](https://curieuxjy.github.io/posts/code/2024-01-07-quarto-blog.html)

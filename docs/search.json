@@ -4,7 +4,42 @@
     "href": "index.html",
     "title": "진원 블로그",
     "section": "",
-    "text": "LiDAR 하드웨어 개요\n\n\n\n\n\n\nlidar\n\n\nsensor\n\n\n\n\n\n\n\n\n\nJul 6, 2024\n\n\n김진원\n\n\n\n\n\n\n\n\n\n\n\n\nQuarto 소개\n\n\n\n\n\n\nblog\n\n\nwrite\n\n\n\n\n\n\n\n\n\nJun 8, 2024\n\n\n김진원\n\n\n\n\n\n\nNo matching items"
+    "text": "IsaacLab 설치하기\n\n\n\n\n\n\nnvidia\n\n\nisaaclab\n\n\nrobotics\n\n\nrl\n\n\n\n\n\n\n\n\n\nJul 9, 2024\n\n\n김진원\n\n\n\n\n\n\n\n\n\n\n\n\nLiDAR 하드웨어 개요\n\n\n\n\n\n\nlidar\n\n\nsensor\n\n\n\n\n\n\n\n\n\nJul 6, 2024\n\n\n김진원\n\n\n\n\n\n\n\n\n\n\n\n\nQuarto 소개\n\n\n\n\n\n\nblog\n\n\nwrite\n\n\n\n\n\n\n\n\n\nJun 8, 2024\n\n\n김진원\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/240709_IsaacLab_installation/index.html",
+    "href": "posts/240709_IsaacLab_installation/index.html",
+    "title": "IsaacLab 설치하기",
+    "section": "",
+    "text": "IssacLab 설치하기"
+  },
+  {
+    "objectID": "posts/240709_IsaacLab_installation/index.html#os-사전-설치-사항",
+    "href": "posts/240709_IsaacLab_installation/index.html#os-사전-설치-사항",
+    "title": "IsaacLab 설치하기",
+    "section": "OS & 사전 설치 사항",
+    "text": "OS & 사전 설치 사항\n\nUbuntu 22.04\nROS 2 humble\nIsaac Sim 4.0 이상\nminiconda or anaconda\n\n\n추가적으로 설치할 패키지\nsudo apt install cmake build-essential"
+  },
+  {
+    "objectID": "posts/240709_IsaacLab_installation/index.html#isaaclab-설치하기",
+    "href": "posts/240709_IsaacLab_installation/index.html#isaaclab-설치하기",
+    "title": "IsaacLab 설치하기",
+    "section": "IsaacLab 설치하기",
+    "text": "IsaacLab 설치하기\n먼저 isaaclab 설치 파일을 github에서 다운 받는다.\ngit clone git@github.com:isaac-sim/IsaacLab.git\nisaaclab.sh를 사용해서 다양한 명령어를 수행할 수 있다.\n./isaaclab.sh --help\n\nusage: isaaclab.sh [-h] [-i] [-f] [-p] [-s] [-t] [-o] [-v] [-d] [-c] -- Utility to manage Isaac Lab.\n\noptional arguments:\n   -h, --help           Display the help content.\n   -i, --install [LIB]  Install the extensions inside Isaac Lab and learning frameworks (rl-games, rsl-rl, sb3, skrl) as extra dependencies. Default is 'all'.\n   -f, --format         Run pre-commit to format the code and check lints.\n   -p, --python         Run the python executable provided by Isaac Sim or virtual environment (if active).\n   -s, --sim            Run the simulator executable (isaac-sim.sh) provided by Isaac Sim.\n   -t, --test           Run all python unittest tests.\n   -o, --docker         Run the docker container helper script (docker/container.sh).\n   -v, --vscode         Generate the VSCode settings file from template.\n   -d, --docs           Build the documentation from source using sphinx.\n   -c, --conda [NAME]   Create the conda environment for Isaac Lab. Default name is 'isaaclab'.\n\nIsaacSim symbolic link 만들기\n설치된 Isaac Lab 디렉터리에 설치된 IsaacSim을 연결해주는 _isaac_sim 심볼릭 링크를 설정한다. 이렇게 하면 Isaac Sim에 있는 파이썬 모듈과 확장 프로그램을 쉽게 찾을 수 있다.\n# enter the cloned repository\ncd IsaacLab\n# create a symbolic link\nln -s path_to_isaac_sim _isaac_sim\n# For example: ln -s /home/nvidia/.local/share/ov/pkg/isaac-sim-4.0.0 _isaac_sim\n\n\nConda 환경 만들기 (optional)\n기본적으로 가상환경을 사용하기를 권장한다. 이를 설정하기 위해서는 아래의 명령어를 사용하면 된다.\n# Option 1: Default name for conda environment is 'isaaclab'\n./isaaclab.sh --conda  # or \"./isaaclab.sh -c\"\n# Option 2: Custom name for conda environment\n./isaaclab.sh --conda my_env  # or \"./isaaclab.sh -c my_env\"\n환경을 활성화 하기 위해서는 conda activate를 활용한다.\nconda activate isaaclab  # or \"conda activate my_env\"\n만약 로컬에서 진행하고 싶다면 아래와 같이 설치를 하면 된다. (권장하지 않음)\n./isaaclab.sh -p\n\n\nIsaacLab 설치하기\n이제 설치명령어만 남았다. 이때, 주의할 것은 conda 환경에 진입한 채로 설치해야한다는 것이다! 아래 명령을 통해 IsaacLab을 설치할 수 있다.\n./isaaclab.sh --install # or \"./isaaclab.sh -i\"\n위와 같이 설치할 경우 모든 학습 framework를 다 다운 받는다. 만약 일부의 프레임워크만 사용하고 싶다면 (e.g. rl_games) 인자로 필요한 라이브러리를 작성해주면 된다.\n./isaaclab.sh --install rl_games  # or \"./isaaclab.sh -i rl_games\"\n유효한 인자는 rl_games, rsl_rl, sb3, skrl, robomimic, none이 있다."
+  },
+  {
+    "objectID": "posts/240709_IsaacLab_installation/index.html#reference",
+    "href": "posts/240709_IsaacLab_installation/index.html#reference",
+    "title": "IsaacLab 설치하기",
+    "section": "Reference",
+    "text": "Reference\nhttps://isaac-sim.github.io/IsaacLab/source/setup/installation/index.html"
+  },
+  {
+    "objectID": "posts/240608_quarto_intro/index.html",
+    "href": "posts/240608_quarto_intro/index.html",
+    "title": "Quarto 소개",
+    "section": "",
+    "text": "나만의 기술 블로그 만들기\n\n정연님이 추천해주신 블로그 템플릿을 사용해서, 나만의 블로그를 만들어보고자 한다.\n아래의 레퍼런스를 따라서 제작한 상황이다. 아직 안 예뻐서 하나씩 고쳐나가야할 것 같다.\n\nReference\nhttps://curieuxjy.github.io/posts/code/2024-01-07-quarto-blog.html"
   },
   {
     "objectID": "posts/240706_lidar/index.html",
@@ -33,13 +68,6 @@
     "title": "LiDAR 하드웨어 개요",
     "section": "라이다의 타입",
     "text": "라이다의 타입\n3D 라이다는 다양한 타입의 모델이 존재한다.\n\nSpinning type\n\n\n\nimage-20240706130805126\n\n\n\n위 그림과 같이 센서들이 수직으로 배열되어 있으며, 모터가 센서를 회전시켜가면서 값을 취득하는 방법이다.\n이는 수직으로 배열된 레이저 모듈이기에 거리가 증가함에 따라 point의 밀도는 점차적으로 줄어든다.\ndetection range와 resolution을 증가시키기 위한 한가지 방법은 transmit-receive 모듈을 추가하는 것이다.\n센서의 수가 늘어날수록, calibration을 하기가 힘들어져 비용이 기하급수적으로 증가한다.\n\nHybrid solid-state LiDAR\n\n\n\nPeek 2024-07-06 13-15\n\n\n\n제한된 각도로 회전하는 두개의 거울을 사용한다.\n폴리곤 거울은 회전하며 레이저가 수평으로 스캔되도록 하고, 위아래로 흔들리는 거울을 레이저 빔을 수직으로 굴절시킨다.\nspinning type에 비해서 매우 높은 hz가 필요하다. 즉 잘 고장날 가능성이 높다.\n\nMEMS module LiDAR\n\n\n\ntest-product\n\n\n\nMEMS 시스템을 통해 고주파로 회전하며 레이저 빔을 반사하는 방식임.\nRecevier가 먼 거리의 물체를 감지하기 위해서는 충분한 빛을 받아야하기에 먼 거리의 값을 측정하기 어렵다.\n거울이 커질수록 고주파의 진동을 견디기 어렵다.\n내구성 문제가 있다.\n제한된 회전각도로 인해 FOV가 낮다.\n\nSolid-state LiDAR\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nASIC 기술을 통해 수백개의 레이저 모듈을 단일 칩에 통합시켜 만든 LiDAR이다.\n이는 뛰어난 거리 측정 해상도와 정확성을 제공하며, 단순화된 제조를 통해 효율성과 일관성을 높인다.\n\n\n\nReference\nhttps://www.youtube.com/watch?v=3EehCU3csJQ&t=18s\n\n\nImage credit\nhttps://preciseley.com/product/mems-scanning-mirror/\nhttps://www.hesaitech.com/things-you-need-to-know-about-lidar-solid-state-and-hybrid-solid-state-whats-the-difference/"
-  },
-  {
-    "objectID": "posts/240608_quarto_intro/index.html",
-    "href": "posts/240608_quarto_intro/index.html",
-    "title": "Quarto 소개",
-    "section": "",
-    "text": "나만의 기술 블로그 만들기\n\n정연님이 추천해주신 블로그 템플릿을 사용해서, 나만의 블로그를 만들어보고자 한다.\n아래의 레퍼런스를 따라서 제작한 상황이다. 아직 안 예뻐서 하나씩 고쳐나가야할 것 같다.\n\nReference\nhttps://curieuxjy.github.io/posts/code/2024-01-07-quarto-blog.html"
   },
   {
     "objectID": "about.html",

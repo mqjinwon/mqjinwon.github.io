@@ -4,6 +4,14 @@ author: "김진원"
 date: "2024-06-08"
 categories: [blog, write]
 image: https://quarto.org/quarto.png
+
+format: 
+  html:
+    code-fold: show   # Optional: Allows code blocks to be folded
+    code-overflow: wrap  # Prevents horizontal scrolling
+jupyter: python3
+
+toc: true  # Optional: Adds a table of contents
 ---
 
 나만의 기술 블로그 만들기

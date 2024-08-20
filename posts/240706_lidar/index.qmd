@@ -4,6 +4,14 @@ author: "김진원"
 date: "2024-07-06"
 categories: [lidar, sensor]
 image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUbK059WsPhUyqiwZKiuppI5n98mJclFAzJFZEaHBR1nNUJkX5T9TJClpFZJENozLOtLM&usqp=CAU
+
+format: 
+  html:
+    code-fold: show   # Optional: Allows code blocks to be folded
+    code-overflow: wrap  # Prevents horizontal scrolling
+jupyter: python3
+
+toc: true  # Optional: Adds a table of contents
 ---
 
 라이다의 종류에 대해서 알아보자

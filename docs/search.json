@@ -1,45 +1,38 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "진원 블로그",
+    "objectID": "posts/240820_IsaacLab_configclass/index.html",
+    "href": "posts/240820_IsaacLab_configclass/index.html",
+    "title": "IsaacLab의 configclass decorator 역할",
     "section": "",
-    "text": "IsaacLab 설치하기\n\n\n\n\n\n\nnvidia\n\n\nisaaclab\n\n\nrobotics\n\n\nrl\n\n\n\n\n\n\n\n\n\nJul 9, 2024\n\n\n김진원\n\n\n\n\n\n\n\n\n\n\n\n\nLiDAR 하드웨어 개요\n\n\n\n\n\n\nlidar\n\n\nsensor\n\n\n\n\n\n\n\n\n\nJul 6, 2024\n\n\n김진원\n\n\n\n\n\n\n\n\n\n\n\n\nQuarto 소개\n\n\n\n\n\n\nblog\n\n\nwrite\n\n\n\n\n\n\n\n\n\nJun 8, 2024\n\n\n김진원\n\n\n\n\n\n\nNo matching items"
+    "text": "configclass vs. dataclass 비교하기"
   },
   {
-    "objectID": "posts/240709_IsaacLab_installation/index.html",
-    "href": "posts/240709_IsaacLab_installation/index.html",
-    "title": "IsaacLab 설치하기",
-    "section": "",
-    "text": "IssacLab 설치하기"
+    "objectID": "posts/240820_IsaacLab_configclass/index.html#introduction",
+    "href": "posts/240820_IsaacLab_configclass/index.html#introduction",
+    "title": "IsaacLab의 configclass decorator 역할",
+    "section": "Introduction",
+    "text": "Introduction\n본 포스팅에서는 python에서 기본적으로 제공하는 @dataclass와 IsaacLab에서 사용하는 @configclass 간의 차이점을 소개합니다.\n\n\n\nimage-20240820212004490\n\n\n본 포스팅을 진행하는 이유는 IsaacLab extension 프로젝트인 IsaacLabExtensionTemplate 에서 사용하는 코드 중 위 이미지와 같이 configclass decorator를 발견했는데, 어떠한 용도로 사용되는 지 궁금해서였다. 그래서 설명을 찾아보니 dataclass decorator를 좀 더 확장성 있게 만든 것이라고 설명을 하기에 두가지의 decorator를 비교해보고자 한다."
   },
   {
-    "objectID": "posts/240709_IsaacLab_installation/index.html#os-사전-설치-사항",
-    "href": "posts/240709_IsaacLab_installation/index.html#os-사전-설치-사항",
-    "title": "IsaacLab 설치하기",
-    "section": "OS & 사전 설치 사항",
-    "text": "OS & 사전 설치 사항\n\nUbuntu 22.04\nROS 2 humble\nIsaac Sim 4.0 이상\nminiconda or anaconda\n\n\n추가적으로 설치할 패키지\nsudo apt install cmake build-essential"
+    "objectID": "posts/240820_IsaacLab_configclass/index.html#decorator란",
+    "href": "posts/240820_IsaacLab_configclass/index.html#decorator란",
+    "title": "IsaacLab의 configclass decorator 역할",
+    "section": "🌸Decorator란?",
+    "text": "🌸Decorator란?\n우선 Decorator가 뭔지 모를 수도 있으니 간단히 설명하고 넘어가도록 하겠다.\n\n[!NOTE]\n어떤 함수를 받아 특정 역할을 수행하고 이를 다시 함수의 형태로 반환하는 함수\n\nPython Decorator 다른 함수를 입력으로 사용하고 명시적으로 수정하지 않고 해당 동작을 확장하거나 변경하는 함수다. Decorator는 일반적으로 깔끔하고 읽기 쉬운 방식으로 함수나 메서드에 기능을 추가하는 데 사용한다.\nDecorator template\n\n\nCode\ndef my_decorator(func):\n    def wrapper(*args, **kwargs):\n        # Code to execute before the function call\n        result = func(*args, **kwargs)\n        # Code to execute after the function call\n        return result\n    return wrapper\n\n@my_decorator\ndef my_function():\n    print(\"Hello, World!\")\n\n\n위와 같이 my_decorator 를 만들면, 이후의 다른 함수에서 @my_decorator를 붙여서 사용할 수 있다.\nExample - logging\n\n\nCode\ndef log_decorator(func):\n    def wrapper(*args, **kwargs):\n        print(f\"Calling function {func.__name__}\")\n        result = func(*args, **kwargs)\n        print(f\"{func.__name__} returned {result}\")\n        return result\n    return wrapper\n\n@log_decorator\ndef add(a, b):\n    return a + b\n\nadd(3, 4)\n\n\nCalling function add\nadd returned 7\n\n\n7\n\n\n위 실험결과로 알 수 있 듯, add 함수를 호출하면 function이 decorator 함수로 들어가서 내부 기능을 수행한 후에 결과값을 뱉어낸다.\nExample - Timing Decorator\n\n\nCode\nimport time\n\ndef timing_decorator(func):\n    def wrapper(*args, **kwargs):\n        start_time = time.time()\n        result = func(*args, **kwargs)\n        end_time = time.time()\n        print(f\"{func.__name__} took {end_time - start_time} seconds\")\n        return result\n    return wrapper\n\n@timing_decorator\ndef compute_square(n):\n    return n * n\n\ncompute_square(10)\n\n\ncompute_square took 9.5367431640625e-07 seconds\n\n\n100\n\n\n위와 같이 시간 측정 시에도 사용할 수 있다.\nKeypoints\n\nDecorators: 실제 코드를 변경하지 않고 기능을 수정하거나 향상시킨다.\n@ syntax: @decorator_name 문법은 Decorator를 사용하기 위한 방법이다."
   },
   {
-    "objectID": "posts/240709_IsaacLab_installation/index.html#isaaclab-설치하기",
-    "href": "posts/240709_IsaacLab_installation/index.html#isaaclab-설치하기",
-    "title": "IsaacLab 설치하기",
-    "section": "IsaacLab 설치하기",
-    "text": "IsaacLab 설치하기\n먼저 isaaclab 설치 파일을 github에서 다운 받는다.\ngit clone git@github.com:isaac-sim/IsaacLab.git\nisaaclab.sh를 사용해서 다양한 명령어를 수행할 수 있다.\n./isaaclab.sh --help\n\nusage: isaaclab.sh [-h] [-i] [-f] [-p] [-s] [-t] [-o] [-v] [-d] [-c] -- Utility to manage Isaac Lab.\n\noptional arguments:\n   -h, --help           Display the help content.\n   -i, --install [LIB]  Install the extensions inside Isaac Lab and learning frameworks (rl-games, rsl-rl, sb3, skrl) as extra dependencies. Default is 'all'.\n   -f, --format         Run pre-commit to format the code and check lints.\n   -p, --python         Run the python executable provided by Isaac Sim or virtual environment (if active).\n   -s, --sim            Run the simulator executable (isaac-sim.sh) provided by Isaac Sim.\n   -t, --test           Run all python unittest tests.\n   -o, --docker         Run the docker container helper script (docker/container.sh).\n   -v, --vscode         Generate the VSCode settings file from template.\n   -d, --docs           Build the documentation from source using sphinx.\n   -c, --conda [NAME]   Create the conda environment for Isaac Lab. Default name is 'isaaclab'.\n\nIsaacSim symbolic link 만들기\n설치된 Isaac Lab 디렉터리에 설치된 IsaacSim을 연결해주는 _isaac_sim 심볼릭 링크를 설정한다. 이렇게 하면 Isaac Sim에 있는 파이썬 모듈과 확장 프로그램을 쉽게 찾을 수 있다.\n# enter the cloned repository\ncd IsaacLab\n# create a symbolic link\nln -s path_to_isaac_sim _isaac_sim\n# For example: ln -s /home/nvidia/.local/share/ov/pkg/isaac-sim-4.0.0 _isaac_sim\n\n\nConda 환경 만들기 (optional)\n기본적으로 가상환경을 사용하기를 권장한다. 이를 설정하기 위해서는 아래의 명령어를 사용하면 된다.\n# Option 1: Default name for conda environment is 'isaaclab'\n./isaaclab.sh --conda  # or \"./isaaclab.sh -c\"\n# Option 2: Custom name for conda environment\n./isaaclab.sh --conda my_env  # or \"./isaaclab.sh -c my_env\"\n환경을 활성화 하기 위해서는 conda activate를 활용한다.\nconda activate isaaclab  # or \"conda activate my_env\"\n만약 로컬에서 진행하고 싶다면 아래와 같이 설치를 하면 된다. (권장하지 않음)\n./isaaclab.sh -p\n\n\nIsaacLab 설치하기\n이제 설치명령어만 남았다. 이때, 주의할 것은 conda 환경에 진입한 채로 설치해야한다는 것이다! 아래 명령을 통해 IsaacLab을 설치할 수 있다.\n./isaaclab.sh --install # or \"./isaaclab.sh -i\"\n위와 같이 설치할 경우 모든 학습 framework를 다 다운 받는다. 만약 일부의 프레임워크만 사용하고 싶다면 (e.g. rl_games) 인자로 필요한 라이브러리를 작성해주면 된다.\n./isaaclab.sh --install rl_games  # or \"./isaaclab.sh -i rl_games\"\n유효한 인자는 rl_games, rsl_rl, sb3, skrl, robomimic, none이 있다."
+    "objectID": "posts/240820_IsaacLab_configclass/index.html#dataclass-기능",
+    "href": "posts/240820_IsaacLab_configclass/index.html#dataclass-기능",
+    "title": "IsaacLab의 configclass decorator 역할",
+    "section": "Dataclass 기능",
+    "text": "Dataclass 기능\nPython의 dataclass는 dataclasses 모듈(Python 3.7에서 도입됨)이 제공하는 데코레이터이자 유틸리티로, __init__, __repr__, __eq__ 등과 같은 특수 메서드를 자동으로 생성한다. 주로 데이터를 저장하고 상용구 코드를 줄이는 데 사용되는 클래스 생성을 단순화하도록 설계되었다.\n@dataclass로 클래스를 장식하면 Python은 자동으로 다음 메서드를 생성한다.\n\n__init__: 매개변수를 기반으로 속성을 설정하는 초기화 방법.\n__repr__: 읽을 수 있는 문자열 출력을 제공하는 문자열 표현 방법.\n__eq__: 속성을 기준으로 인스턴스를 비교하는 동등 방법.\n__hash__: 객체를 hashable 하게 만드는 해시 방법(선택 사항, frozen 설정에 따라 다름).\n__post_init__: 추가 초기화를 위해 정의할 수 있는 선택적 메소드.\n\n\n\nCode\nfrom dataclasses import dataclass\n\n@dataclass\nclass Person:\n    name: str\n    age: int\n    job: str = \"Unknown\"  # Default value for job\n\n# Creating an instance\np = Person(name=\"Alice\", age=30)\n\n# Accessing attributes\nprint(p.name)  # Output: Alice\nprint(p.age)   # Output: 30\nprint(p.job)   # Output: Unknown\n\n# Automatic __repr__ method\nprint(p)  # Output: Person(name='Alice', age=30, job='Unknown')\n\n# Automatic __eq__ method\np2 = Person(name=\"Alice\", age=30)\nprint(p == p2)  # Output: True\n\n\nAlice\n30\nUnknown\nPerson(name='Alice', age=30, job='Unknown')\nTrue"
   },
   {
-    "objectID": "posts/240709_IsaacLab_installation/index.html#reference",
-    "href": "posts/240709_IsaacLab_installation/index.html#reference",
-    "title": "IsaacLab 설치하기",
-    "section": "Reference",
-    "text": "Reference\nhttps://isaac-sim.github.io/IsaacLab/source/setup/installation/index.html"
-  },
-  {
-    "objectID": "posts/240608_quarto_intro/index.html",
-    "href": "posts/240608_quarto_intro/index.html",
-    "title": "Quarto 소개",
-    "section": "",
-    "text": "나만의 기술 블로그 만들기\n\n정연님이 추천해주신 블로그 템플릿을 사용해서, 나만의 블로그를 만들어보고자 한다.\n아래의 레퍼런스를 따라서 제작한 상황이다. 아직 안 예뻐서 하나씩 고쳐나가야할 것 같다.\n\nReference\nhttps://curieuxjy.github.io/posts/code/2024-01-07-quarto-blog.html"
+    "objectID": "posts/240820_IsaacLab_configclass/index.html#configclass-분석",
+    "href": "posts/240820_IsaacLab_configclass/index.html#configclass-분석",
+    "title": "IsaacLab의 configclass decorator 역할",
+    "section": "configclass 분석",
+    "text": "configclass 분석\n\n\nCode\ndef __dataclass_transform__():\n    \"\"\"Add annotations decorator for PyLance.\"\"\"\n    return lambda a: a\n\n\n@__dataclass_transform__()\ndef configclass(cls, **kwargs):\n    \"\"\"Wrapper around `dataclass` functionality to add extra checks and utilities.\n\n    As of Python 3.7, the standard dataclasses have two main issues which makes them non-generic for\n    configuration use-cases. These include:\n\n    1. Requiring a type annotation for all its members.\n    2. Requiring explicit usage of :meth:`field(default_factory=...)` to reinitialize mutable variables.\n\n    This function provides a decorator that wraps around Python's `dataclass`_ utility to deal with\n    the above two issues. It also provides additional helper functions for dictionary &lt;-&gt; class\n    conversion and easily copying class instances.\n\n    Usage:\n\n    .. code-block:: python\n\n        from dataclasses import MISSING\n\n        from omni.isaac.lab.utils.configclass import configclass\n\n\n        @configclass\n        class ViewerCfg:\n            eye: list = [7.5, 7.5, 7.5]  # field missing on purpose\n            lookat: list = field(default_factory=[0.0, 0.0, 0.0])\n\n\n        @configclass\n        class EnvCfg:\n            num_envs: int = MISSING\n            episode_length: int = 2000\n            viewer: ViewerCfg = ViewerCfg()\n\n        # create configuration instance\n        env_cfg = EnvCfg(num_envs=24)\n\n        # print information as a dictionary\n        print(env_cfg.to_dict())\n\n        # create a copy of the configuration\n        env_cfg_copy = env_cfg.copy()\n\n        # replace arbitrary fields using keyword arguments\n        env_cfg_copy = env_cfg_copy.replace(num_envs=32)\n\n    Args:\n        cls: The class to wrap around.\n        **kwargs: Additional arguments to pass to :func:`dataclass`.\n\n    Returns:\n        The wrapped class.\n\n    .. _dataclass: https://docs.python.org/3/library/dataclasses.html\n    \"\"\"\n    # add type annotations\n    _add_annotation_types(cls)\n    # add field factory\n    _process_mutable_types(cls)\n    # copy mutable members\n    # note: we check if user defined __post_init__ function exists and augment it with our own\n    if hasattr(cls, \"__post_init__\"):\n        setattr(cls, \"__post_init__\", _combined_function(cls.__post_init__, _custom_post_init))\n    else:\n        setattr(cls, \"__post_init__\", _custom_post_init)\n    # add helper functions for dictionary conversion\n    setattr(cls, \"to_dict\", _class_to_dict)\n    setattr(cls, \"from_dict\", _update_class_from_dict)\n    setattr(cls, \"replace\", _replace_class_with_kwargs)\n    setattr(cls, \"copy\", _copy_class)\n    # wrap around dataclass\n    cls = dataclass(cls, **kwargs)\n    # return wrapped class\n    return cls"
   },
   {
     "objectID": "posts/240706_lidar/index.html",
@@ -70,10 +63,52 @@
     "text": "라이다의 타입\n3D 라이다는 다양한 타입의 모델이 존재한다.\n\nSpinning type\n\n\n\nimage-20240706130805126\n\n\n\n위 그림과 같이 센서들이 수직으로 배열되어 있으며, 모터가 센서를 회전시켜가면서 값을 취득하는 방법이다.\n이는 수직으로 배열된 레이저 모듈이기에 거리가 증가함에 따라 point의 밀도는 점차적으로 줄어든다.\ndetection range와 resolution을 증가시키기 위한 한가지 방법은 transmit-receive 모듈을 추가하는 것이다.\n센서의 수가 늘어날수록, calibration을 하기가 힘들어져 비용이 기하급수적으로 증가한다.\n\nHybrid solid-state LiDAR\n\n\n\nPeek 2024-07-06 13-15\n\n\n\n제한된 각도로 회전하는 두개의 거울을 사용한다.\n폴리곤 거울은 회전하며 레이저가 수평으로 스캔되도록 하고, 위아래로 흔들리는 거울을 레이저 빔을 수직으로 굴절시킨다.\nspinning type에 비해서 매우 높은 hz가 필요하다. 즉 잘 고장날 가능성이 높다.\n\nMEMS module LiDAR\n\n\n\ntest-product\n\n\n\nMEMS 시스템을 통해 고주파로 회전하며 레이저 빔을 반사하는 방식임.\nRecevier가 먼 거리의 물체를 감지하기 위해서는 충분한 빛을 받아야하기에 먼 거리의 값을 측정하기 어렵다.\n거울이 커질수록 고주파의 진동을 견디기 어렵다.\n내구성 문제가 있다.\n제한된 회전각도로 인해 FOV가 낮다.\n\nSolid-state LiDAR\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nASIC 기술을 통해 수백개의 레이저 모듈을 단일 칩에 통합시켜 만든 LiDAR이다.\n이는 뛰어난 거리 측정 해상도와 정확성을 제공하며, 단순화된 제조를 통해 효율성과 일관성을 높인다.\n\n\n\nReference\nhttps://www.youtube.com/watch?v=3EehCU3csJQ&t=18s\n\n\nImage credit\nhttps://preciseley.com/product/mems-scanning-mirror/\nhttps://www.hesaitech.com/things-you-need-to-know-about-lidar-solid-state-and-hybrid-solid-state-whats-the-difference/"
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "진원 블로그",
+    "section": "",
+    "text": "IsaacLab의 configclass decorator 역할\n\n\n\n\n\n\nnvidia\n\n\nisaaclab\n\n\nrobotics\n\n\nrl\n\n\npython\n\n\n\n\n\n\n\n\n\nAug 20, 2024\n\n\n김진원\n\n\n\n\n\n\n\n\n\n\n\n\nIsaacLab 설치하기\n\n\n\n\n\n\nnvidia\n\n\nisaaclab\n\n\nrobotics\n\n\nrl\n\n\n\n\n\n\n\n\n\nJul 9, 2024\n\n\n김진원\n\n\n\n\n\n\n\n\n\n\n\n\nLiDAR 하드웨어 개요\n\n\n\n\n\n\nlidar\n\n\nsensor\n\n\n\n\n\n\n\n\n\nJul 6, 2024\n\n\n김진원\n\n\n\n\n\n\n\n\n\n\n\n\nQuarto 소개\n\n\n\n\n\n\nblog\n\n\nwrite\n\n\n\n\n\n\n\n\n\nJun 8, 2024\n\n\n김진원\n\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
     "text": "About this blog"
+  },
+  {
+    "objectID": "posts/240608_quarto_intro/index.html",
+    "href": "posts/240608_quarto_intro/index.html",
+    "title": "Quarto 소개",
+    "section": "",
+    "text": "나만의 기술 블로그 만들기\n\n정연님이 추천해주신 블로그 템플릿을 사용해서, 나만의 블로그를 만들어보고자 한다.\n아래의 레퍼런스를 따라서 제작한 상황이다. 아직 안 예뻐서 하나씩 고쳐나가야할 것 같다.\n\nReference\nhttps://curieuxjy.github.io/posts/code/2024-01-07-quarto-blog.html"
+  },
+  {
+    "objectID": "posts/240709_IsaacLab_installation/index.html",
+    "href": "posts/240709_IsaacLab_installation/index.html",
+    "title": "IsaacLab 설치하기",
+    "section": "",
+    "text": "IssacLab 설치하기"
+  },
+  {
+    "objectID": "posts/240709_IsaacLab_installation/index.html#os-사전-설치-사항",
+    "href": "posts/240709_IsaacLab_installation/index.html#os-사전-설치-사항",
+    "title": "IsaacLab 설치하기",
+    "section": "OS & 사전 설치 사항",
+    "text": "OS & 사전 설치 사항\n\nUbuntu 22.04\nROS 2 humble\nIsaac Sim 4.0 이상\nminiconda or anaconda\n\n\n추가적으로 설치할 패키지\nsudo apt install cmake build-essential"
+  },
+  {
+    "objectID": "posts/240709_IsaacLab_installation/index.html#isaaclab-설치하기",
+    "href": "posts/240709_IsaacLab_installation/index.html#isaaclab-설치하기",
+    "title": "IsaacLab 설치하기",
+    "section": "IsaacLab 설치하기",
+    "text": "IsaacLab 설치하기\n먼저 isaaclab 설치 파일을 github에서 다운 받는다.\ngit clone git@github.com:isaac-sim/IsaacLab.git\nisaaclab.sh를 사용해서 다양한 명령어를 수행할 수 있다.\n./isaaclab.sh --help\n\nusage: isaaclab.sh [-h] [-i] [-f] [-p] [-s] [-t] [-o] [-v] [-d] [-c] -- Utility to manage Isaac Lab.\n\noptional arguments:\n   -h, --help           Display the help content.\n   -i, --install [LIB]  Install the extensions inside Isaac Lab and learning frameworks (rl-games, rsl-rl, sb3, skrl) as extra dependencies. Default is 'all'.\n   -f, --format         Run pre-commit to format the code and check lints.\n   -p, --python         Run the python executable provided by Isaac Sim or virtual environment (if active).\n   -s, --sim            Run the simulator executable (isaac-sim.sh) provided by Isaac Sim.\n   -t, --test           Run all python unittest tests.\n   -o, --docker         Run the docker container helper script (docker/container.sh).\n   -v, --vscode         Generate the VSCode settings file from template.\n   -d, --docs           Build the documentation from source using sphinx.\n   -c, --conda [NAME]   Create the conda environment for Isaac Lab. Default name is 'isaaclab'.\n\nIsaacSim symbolic link 만들기\n설치된 Isaac Lab 디렉터리에 설치된 IsaacSim을 연결해주는 _isaac_sim 심볼릭 링크를 설정한다. 이렇게 하면 Isaac Sim에 있는 파이썬 모듈과 확장 프로그램을 쉽게 찾을 수 있다.\n# enter the cloned repository\ncd IsaacLab\n# create a symbolic link\nln -s path_to_isaac_sim _isaac_sim\n# For example: ln -s /home/nvidia/.local/share/ov/pkg/isaac-sim-4.0.0 _isaac_sim\n\n\nConda 환경 만들기 (optional)\n기본적으로 가상환경을 사용하기를 권장한다. 이를 설정하기 위해서는 아래의 명령어를 사용하면 된다.\n# Option 1: Default name for conda environment is 'isaaclab'\n./isaaclab.sh --conda  # or \"./isaaclab.sh -c\"\n# Option 2: Custom name for conda environment\n./isaaclab.sh --conda my_env  # or \"./isaaclab.sh -c my_env\"\n환경을 활성화 하기 위해서는 conda activate를 활용한다.\nconda activate isaaclab  # or \"conda activate my_env\"\n만약 로컬에서 진행하고 싶다면 아래와 같이 설치를 하면 된다. (권장하지 않음)\n./isaaclab.sh -p\n\n\nIsaacLab 설치하기\n이제 설치명령어만 남았다. 이때, 주의할 것은 conda 환경에 진입한 채로 설치해야한다는 것이다! 아래 명령을 통해 IsaacLab을 설치할 수 있다.\n./isaaclab.sh --install # or \"./isaaclab.sh -i\"\n위와 같이 설치할 경우 모든 학습 framework를 다 다운 받는다. 만약 일부의 프레임워크만 사용하고 싶다면 (e.g. rl_games) 인자로 필요한 라이브러리를 작성해주면 된다.\n./isaaclab.sh --install rl_games  # or \"./isaaclab.sh -i rl_games\"\n유효한 인자는 rl_games, rsl_rl, sb3, skrl, robomimic, none이 있다."
+  },
+  {
+    "objectID": "posts/240709_IsaacLab_installation/index.html#reference",
+    "href": "posts/240709_IsaacLab_installation/index.html#reference",
+    "title": "IsaacLab 설치하기",
+    "section": "Reference",
+    "text": "Reference\nhttps://isaac-sim.github.io/IsaacLab/source/setup/installation/index.html"
   }
 ]

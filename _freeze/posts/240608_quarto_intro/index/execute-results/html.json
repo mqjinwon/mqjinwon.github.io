@@ -1,0 +1,12 @@
+{
+  "hash": "4419dc0de29539152dd6a038f36f6363",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Quarto 소개\"\nauthor: \"김진원\"\ndate: \"2024-06-08\"\ncategories: [blog, write]\nimage: https://quarto.org/quarto.png\n\nformat: \n  html:\n    code-fold: show   # Optional: Allows code blocks to be folded\n    code-overflow: wrap  # Prevents horizontal scrolling\njupyter: python3\n\ntoc: true  # Optional: Adds a table of contents\n---\n\n\n\n\n\n나만의 기술 블로그 만들기\n\n---\n\n정연님이 추천해주신 블로그 템플릿을 사용해서, 나만의 블로그를 만들어보고자 한다.\n\n아래의 레퍼런스를 따라서 제작한 상황이다.\n아직 안 예뻐서 하나씩 고쳐나가야할 것 같다.\n\n\n### Reference\n\n[https://curieuxjy.github.io/posts/code/2024-01-07-quarto-blog.html](https://curieuxjy.github.io/posts/code/2024-01-07-quarto-blog.html)\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

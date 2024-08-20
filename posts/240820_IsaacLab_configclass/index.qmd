@@ -220,12 +220,12 @@ p2 = Product(name="Tablet", price=499.99)
 # Comparing products (by price since quantity is excluded)
 print(p1 > p2)  # Output: True
 
-p1.name = "wrong"
+# p1.name = "wrong"
 ```
 
 
 
-## configclass 분석
+## 💾configclass 분석
 
 ```{python}
 def __dataclass_transform__():
@@ -382,6 +382,6 @@ mutable한 기본값을 쉽게 처리하고, `type annotation`을 동적으로 �
 
 
 
-## Reference
+## 📖Reference
 
 1. [[Python 문법] 데코레이터 (Decorator)](https://nachwon.github.io/decorator/)

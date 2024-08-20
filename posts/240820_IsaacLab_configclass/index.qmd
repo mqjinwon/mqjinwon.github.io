@@ -23,15 +23,15 @@ configclass vs. dataclass 비교하기
 
 configclass를 사용하면...
 
+- **dataclass**의 부족한 부분을 채워준 decorator
 - **Type annotation**과 **Mutable default** 을 자동으로 처리하므로 사용하기 간단함
 - **Class instance**와 **dictionary** 간의 쉬운 변환을 위한 유틸리티 메소드 제공
-- 추가 확인 및 **post-initialization** 를 통해 데이터클래스 기능을 향상
 
 
 
 ## 🏁Introduction
 
-본 포스팅에서는 python에서 기본적으로 제공하는 `@dataclass`와 IsaacLab에서 사용하는 `@configclass` 간의 차이점을 소개합니다.
+본 포스팅에서는 python에서 기본적으로 제공하는 `@dataclass`와 IsaacLab에서 사용하는 `@configclass` 간의 차이점을 소개한다.
 
 
 

@@ -1,0 +1,12 @@
+{
+  "hash": "b3076d14dd327da49caa8e0698bf3e59",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"StrideSim 프로젝트 시작\"\nauthor: \"김진원\"\ndate: \"2024-08-26\"\ncategories: [nvidia, isaaclab, robotics, rl, python]\nimage: https://isaac-sim.github.io/IsaacLab/_images/isaaclab.jpg\n\nformat: \n  html:\n    code-fold: show   # Optional: Allows code blocks to be folded\n    code-overflow: wrap  # Prevents horizontal scrolling\njupyter: python3\n\ntoc: true  # Optional: Adds a table of contents\n---\n\n\n\n\nStrideSim 시뮬레이터 세팅\n\n---\n\n\n# ✂️TL;DR\n\nStrideSim 시뮬레이터의 소개 및 설치 방법을 알려준다.\n\n\n\n## 🏁Introduction\n\n이번 Auturbo 5기에서 진행하고자 하는 시뮬레이터 제작 프로젝트에 대하여 소개 및 설치 방법에 대하여 안내하고자 한다.\n\n\n\n## StrideSim이란?\n\nTODO...\n\n\n\n\n\n## StrideSim 설치방법\n\n### IsaacSim 설치하기\n\n1. [공식 레포](https://isaac-sim.github.io/IsaacLab/source/setup/installation/pip_installation.html#installing-isaac-sim)에서 하라는대로 진행\n\n\n\n### IsaacLab 설치하기\n\n1. 이전에 [포스팅한 설치 가이드](https://mqjinwon.github.io/posts/240709_IsaacLab_installation/)를 따라서 진행한다.\n\n   다만 branch는 `v1.0.0` 로 진행한다.\n\n\n\n### StrideSim 설치하기\n\n1. 레포 다운받기\n\n   ```bash\n   git clone https://github.com/AuTURBO/StrideSim.git\n   ```\n\n2. 설치하기\n\n- 설치 시, IsaacLab의 가상환경에서 진행해야한다!\n\n  ```bash\n  conda activate isaaclab\n  ```\n\n- 권장하는 바는 아래 이미지 처럼, vscode에서 \"python: 인터프리터 선택\" 에서 isaaclab을 세팅하고 이를 활용하는 것이다.\n\n ![image-20240826230509665](assets/image-20240826230509665.png)\n\n- 그리고 아래와 같이 extension을 설치해준다.\n\n```bash\ncd StrideSim/exts/StrideSim\npython -m pip install -e .\n```\n\n\n\n- IsaacSim을 가상환경에서 실행하는 방법은 간단하다. 먼저 환경 변수를 ~/.bashrc에 설정해준다.\n\n  ```bash\n  # ~/.bashrc\n  \n  # Isaac Sim root directory\n  export ISAACSIM_PATH=\"${HOME}/.local/share/ov/pkg/isaac-sim-4.0.0\"\n  # Isaac Sim python executable\n  alias ISAACSIM_PYTHON=\"${ISAACSIM_PATH}/python.sh\"\n  # Isaac Sim app\n  alias ISAACSIM=\"${ISAACSIM_PATH}/isaac-sim.sh\"\n  ```\n\n  - 그리고 나서는 isaaclab 가상환경에서 `ISAASIM` alias를 부른다.\n\n\n\n- extension 설정\n\n  - Window -> Extensions 진입\n\n    ![image-20240826231027906](assets/image-20240826231027906.png)\n\n  - 삼지창 -> Settings\n\n    ![image-20240826231052410](assets/image-20240826231052410.png)\n\n  - Extension Search Paths에 extension path 추가하기\n\n    ![image-20240826231156289](assets/image-20240826231156289.png)\n\n\n\n## 📖Reference\n\n1. \n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

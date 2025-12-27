@@ -19,9 +19,10 @@ main:
     
   - title: "Portfolio"
     url: /portfolio/
-        
-  # - title: "Blog Posts"
-  #   url: /year-archive/
+    
+  # External links for blog posts
+  - title: "Blog Posts"
+    url: /blogs/
     
   - title: "CV"
     url: /cv/

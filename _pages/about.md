@@ -32,7 +32,7 @@ See the full list on the [Publications](/publications/) page.
 
 - Todo
 
-See the full list on the [Projects](/Portfolio/) page.
+See the full list on the [Portfolio](/portfolio/) page.
 
 ## Experience
 

@@ -5,13 +5,25 @@
     <h4 class="page__share-title">{{ site.data.ui-text[site.locale].share_on_label | default: "Share on" }}</h4>
   {% endif %}
 
-  <a href="https://bsky.app/intent/compose?text={{ base_path }}{{ page.url }}" class="btn btn--bluesky" title="{{ site.data.ui-text[site.locale].share_on_label | default: 'Share on' }} Bluesky"><i class="fab fa-bluesky" aria-hidden="true"></i><span> Bluesky</span></a>
+  <!-- <a href="https://bsky.app/intent/compose?text={{ base_path }}{{ page.url }}" class="btn btn--bluesky" title="{{ site.data.ui-text[site.locale].share_on_label | default: 'Share on' }} Bluesky"><i class="fab fa-bluesky" aria-hidden="true"></i><span> Bluesky</span></a> -->
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u={{ base_path }}{{ page.url }}" class="btn btn--facebook" title="{{ site.data.ui-text[site.locale].share_on_label | default: 'Share on' }} Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <!-- <a href="https://www.facebook.com/sharer/sharer.php?u={{ base_path }}{{ page.url }}" class="btn btn--facebook" title="{{ site.data.ui-text[site.locale].share_on_label | default: 'Share on' }} Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a> -->
+
+  
 
   <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ base_path }}{{ page.url }}" class="btn btn--linkedin" title="{{ site.data.ui-text[site.locale].share_on_label | default: 'Share on' }} LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 
-  <a href="https://www.addtoany.com/add_to/mastodon?linkurl={{  base_path | append: page.url | url_encode }}" class="btn btn--mastodon" title="{{ site.data.ui-text[site.locale].share_on_label | default: 'Share on' }} Mastodon"><i class="fab fa-mastodon" aria-hidden="true"></i><span> Mastodon</span></a>
+  <!-- <a href="https://www.addtoany.com/add_to/mastodon?linkurl={{  base_path | append: page.url | url_encode }}" class="btn btn--mastodon" title="{{ site.data.ui-text[site.locale].share_on_label | default: 'Share on' }} Mastodon"><i class="fab fa-mastodon" aria-hidden="true"></i><span> Mastodon</span></a> -->
 
   <a href="https://x.com/intent/post?text={{ base_path }}{{ page.url }}" class="btn btn--x" title="{{ site.data.ui-text[site.locale].share_on_label | default: 'Share on' }} X"><i class="fab fa-x-twitter" aria-hidden="true"></i><span> X (formerly Twitter)</span></a>
+  
+  <a href="https://share.naver.com/web/shareView.nhn?url={{ base_path | append: page.url | url_encode }}&title={{ page.title | url_encode }}" class="btn btn--naver" title="{{ site.data.ui-text[site.locale].share_on_label | default: 'Share on' }} Naver Blog"><i class="fa fa-bold" aria-hidden="true"></i><span> Naver Blog</span></a>
+  
+  <a href="mailto:?subject={{ page.title | url_encode }}&body={{ base_path }}{{ page.url }}" class="btn btn--email" title="{{ site.data.ui-text[site.locale].share_on_label | default: 'Share on' }} Email"><i class="fa fa-envelope" aria-hidden="true"></i><span> Email</span></a>
+
+  <a href="#" class="btn btn--inverse" title="{{ site.data.ui-text[site.locale].share_on_label | default: 'Share on' }} Copy"
+     onclick="event.preventDefault(); if (navigator.clipboard) { navigator.clipboard.writeText('{{ base_path }}{{ page.url }}'); this.querySelector('span').textContent='Copied!'; setTimeout(() => this.querySelector('span').textContent='Copy link', 1500); }">
+    <i class="fa fa-link" aria-hidden="true"></i><span> Copy link</span>
+  </a>
+
 </section>

@@ -1,0 +1,120 @@
+- title: "자연어 경로 지시와 시각-언어 모델 기반 상황 인지를 결합한 도심형 로봇 자율주행 시스템"
+  authors: "김민제, 박경태, **김진원***"
+  venue: "KROC 2026"
+  year: 2026
+  month: 2
+  sort_key: 202602
+  type: domestic
+  thumb: "/assets/img/pub/kroc2026.png"
+  links:
+    paper: "https://drive.google.com/file/d/1E7VQGWZdLXWoTPZjk4zFtFk8drf2Z12K/preview"
+    video: ""
+    code: ""
+    project: ""
+  hidden: false
+
+- title: "Autonomous Multi-Floor and Narrow Indoor Exploration Using Multi-Criteria Decision-Making Approach"
+  authors: "Juhyeong Roh, **Jinwon Kim**, Chanwoo Park, David Hyunchul Shim*"
+  venue: "UR 2025"
+  year: 2025
+  month: 7
+  sort_key: 202507
+  type: international
+  thumb: "/assets/img/pub/ur2025.gif"
+  links:
+    paper: "https://ieeexplore.ieee.org/abstract/document/11078057/"
+    video: ""
+    code: ""
+    project: ""
+  hidden: false
+
+- title: "ATBT: Adaptive Topological Map-Based Behavior Tree for Quadruped Robots"
+  authors: "Woosung Yoon, Junhyeok Choi, Kyungtae Park, Joonghyun Shin, Seungtaek Sung, **Jinwon Kim***"
+  venue: "ICCAS 2025"
+  year: 2025
+  month: 11
+  sort_key: 202511
+  type: international
+  thumb: "/assets/img/pub/iccas2025.gif"
+  links:
+    paper: "https://ieeexplore.ieee.org/abstract/document/11301131"
+    video: "https://youtu.be/Q45S122xe1w?si=FqA8b1V5Dr9DKHiR"
+    code: ""
+    project: ""
+  hidden: false
+
+
+- title: "드론봇챌린지 2024: 사족보행로봇을 활용한 통신 지연없는 지하 자율정찰 기술 연구"
+  authors: "**김진원**, 노주형, 윤우성, 심현철, 박찬우*"
+  venue: "드론봇챌린지 2024"
+  year: 2024
+  month: 11
+  sort_key: 202411
+  type: domestic
+  thumb: "/assets/img/pub/army2024.png"
+  links:
+    paper: "https://drive.google.com/file/d/15hUPZdAK1BDhQojWC0PDyB4hjex5UG3c/preview"
+    video: ""
+    code: ""
+    project: ""
+  hidden: false
+
+- title: "Collision-Backpropagation based Obstacle Avoidance Method for a Legged Robot Expressed as a Simplified Dynamics Model"
+  authors: "**Jinwon Kim**"
+  venue: "M.S. Thesis, KAIST"
+  year: 2023
+  month: 2
+  sort_key: 202302
+  type: thesis
+  thumb: ""
+  links:
+    paper: "https://drive.google.com/file/d/12mFpgonBKgskiwGZHS_wzDNQ8Lla5IW0/preview"
+    video: ""
+    code: ""
+    project: ""
+  hidden: true
+
+- title: "Collision-backpropagation based obstacle avoidance method for a legged robot expressed as a simplified dynamics model"
+  authors: "**Jinwon Kim**, Heechan Shin, S. Yoon*"
+  venue: "ICCAS 2022"
+  year: 2022
+  month: 11
+  sort_key: 202211
+  type: international
+  thumb: "/assets/img/pub/iccas2022.gif"
+  links:
+    paper: "https://ieeexplore.ieee.org/document/10003733"
+    video: ""
+    code: ""
+    project: ""
+  hidden: false
+
+- title: "단순화된 동역학 모델을 가진 보행로봇을 위한 충돌 역전파를 활용한 장애물 회피 방법"
+  authors: "**김진원**, 신희찬, 윤성의*"
+  venue: "KROC 2022"
+  year: 2022
+  month: 5
+  sort_key: 202205
+  type: domestic
+  thumb: "/assets/img/pub/kroc2022.png"
+  links:
+    paper: "https://drive.google.com/file/d/1xQyESm0H6jk73fH5q3chgMY_VNgpXZBI/preview"
+    video: ""
+    code: ""
+    project: ""
+  hidden: false
+
+- title: "Siamese network 기반의 강인한 다중 객체 검출"
+  authors: "**김진원**, 김강건*"
+  venue: "KROC 2020"
+  year: 2020
+  month: 2
+  sort_key: 202002
+  type: domestic
+  thumb: "/assets/img/pub/kroc2020.png"
+  links:
+    paper: "https://drive.google.com/file/d/1pyav-W6QdnO4t4RdMG1whT_0JOTUCUhq/preview"
+    video: ""
+    code: ""
+    project: ""
+  hidden: false

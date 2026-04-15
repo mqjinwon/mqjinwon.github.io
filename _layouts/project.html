@@ -1,0 +1,46 @@
+---
+layout: default
+---
+
+<article class="project-detail">
+  <header>
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="project-detail-desc">{{ page.description }}</p>
+    {% endif %}
+
+    {% if page.links %}
+    <div class="pub-links">
+      {% if page.links.paper and page.links.paper != "" %}<a href="{{ page.links.paper }}" target="_blank"><i class="fa-regular fa-file-lines"></i> Paper</a>{% endif %}
+      {% if page.links.code  and page.links.code  != "" %}<a href="{{ page.links.code  }}" target="_blank"><i class="fa-brands fa-github"></i> Code</a>{% endif %}
+      {% if page.links.video and page.links.video != "" %}<a href="{{ page.links.video }}" target="_blank"><i class="fa-brands fa-youtube"></i> Video</a>{% endif %}
+    </div>
+    {% endif %}
+  </header>
+
+  {% if page.links.video and page.links.video != "" %}
+  {% assign vid_url = page.links.video %}
+  {% if vid_url contains "youtube.com/watch?v=" %}
+    {% assign vid_id = vid_url | split: "v=" | last | split: "&" | first %}
+  {% elsif vid_url contains "youtu.be/" %}
+    {% assign vid_id = vid_url | split: "youtu.be/" | last | split: "?" | first %}
+  {% elsif vid_url contains "youtube.com/embed/" %}
+    {% assign vid_id = vid_url | split: "embed/" | last | split: "?" | first %}
+  {% else %}
+    {% assign vid_id = "" %}
+  {% endif %}
+  {% if vid_id != "" %}
+  <div class="project-video-wrapper">
+    <iframe src="https://www.youtube.com/embed/{{ vid_id }}" title="{{ page.title }} video"
+      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+  </div>
+  {% endif %}
+  {% endif %}
+
+  <hr>
+
+  <div class="project-detail-body">
+    {{ content }}
+  </div>
+</article>

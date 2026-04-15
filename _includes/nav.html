@@ -1,0 +1,13 @@
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a class="site-title" href="{{ '/' | relative_url }}">{{ site.author.name }}</a>
+    <div class="nav-links">
+      <a href="{{ '/' | relative_url }}#publications">Publications</a>
+      <a href="{{ '/' | relative_url }}#projects">Projects</a>
+      <a href="{{ '/' | relative_url }}#awards">Awards</a>
+      {% if site.author.links.cv %}
+        <a href="{{ site.author.links.cv }}" target="_blank">CV</a>
+      {% endif %}
+    </div>
+  </div>
+</nav>

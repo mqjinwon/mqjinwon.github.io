@@ -1,0 +1,48 @@
+# Site
+title: "Jinwon Kim"
+url: "https://mqjinwon.github.io"
+baseurl: ""
+
+# Author
+author:
+  name:        "Jinwon Kim"
+  title:       "Research Engineer"
+  institution: "Korea Robot Manufacturing"
+  location:    "Seoul, South Korea"
+  email:       "mqjinwon@gmail.com"
+  bio:         "I am a Research Engineer and *Team Lead* of the Robot Intelligence Team at [Korea Robot Manufacturing (KRM)](https://www.krm.co.kr/), building **autonomous navigation** and AI systems for **quadruped robots**. I got my M.S. in Robotics from **KAIST** (2023) at the [SGVR lab](https://sgvr.kaist.ac.kr/) under Prof. Sung-Eui Yoon, and my B.S. from Kwangwoon University (2021).\n\nMy work covers the full robot stack — **SLAM**, **motion planning**, and mission-level decision making — deployed on real hardware in outdoor environments. I am particularly interested in **legged robot locomotion**, **reinforcement learning**, and **system identification** for closing the sim-to-real gap."
+  links:
+    scholar:  "https://scholar.google.com/citations?hl=en&user=gIG200oAAAAJ"
+    github:   "https://github.com/mqjinwon"
+    linkedin: "https://linkedin.com/in/robotics-jinwon"
+    cv:       "https://github.com/mqjinwon/cv/blob/main/CV.pdf"
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project
+
+# Build
+markdown: kramdown
+highlighter: rouge
+permalink: /:title/
+encoding: utf-8
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules/

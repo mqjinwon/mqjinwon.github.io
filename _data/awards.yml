@@ -1,0 +1,46 @@
+# Competition Awards
+
+- year: "2024"
+  title: "우수포스터상 — 국방로봇학회 제4회 학술대회"
+  org: "국방로봇학회"
+  desc: "Vision 60 기반 통신음영지역에서의 사족보행로봇 자율탐사"
+  hidden: false
+
+- year: "2024"
+  title: "최우수상 — 2024 국방부장관배 드론봇챌린지 감시정찰분야"
+  org: "국방부"
+  desc: "통신음영지역에서의 사족보행로봇 자율탐사"
+  hidden: false
+
+- year: "2023"
+  title: "최우수상 — 2023 국방부장관배 드론봇챌린지 감시정찰분야"
+  org: "국방부"
+  desc: "원격조종을 통한 사족보행 운용 가능성 검증"
+  hidden: false
+
+# Academic Awards
+- year: "2022"
+  title: "Dean's List"
+  org: "Kwangwoon University"
+  desc: "학업 우수 표창"
+  hidden: true
+
+# Hackathon / Other
+- year: "2018"
+  title: "장려상 — 2018 Open SW 미니 해커톤"
+  org: "정보통신산업진흥원 (NIPA)"
+  desc: "Tizen OS 기반 움직임 추적 차량용 블랙박스 개발"
+  hidden: false
+
+# Patents
+- year: "2024"
+  title: "특허 출원 — 장애물을 고려한 로봇의 이동 경로 결정을 위한 로봇 경로 제어 장치 및 방법"
+  org: "특허청"
+  desc: "출원번호 10-2024-0182720"
+  hidden: false
+
+- year: "2022"
+  title: "특허 등록 — 샴 네트워크를 활용하는 강인한 다중 객체 검출 장치 및 방법"
+  org: "특허청"
+  desc: ""
+  hidden: false

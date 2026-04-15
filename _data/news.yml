@@ -1,0 +1,35 @@
+- date: "2026.02"
+  hidden: false
+  text: "Paper accepted at **KROC 2026** — Urban autonomous robot navigation via natural-language route instructions and VLM-based situation understanding. (Corresponding Author)"
+
+- date: "2025.11"
+  hidden: false
+  text: "Paper accepted at **ICCAS 2025** — ATBT: Adaptive Topological Map-Based Behavior Tree for Quadruped Robots. (Corresponding Author)"
+
+- date: "2024.11"
+  hidden: false
+  text: "**우수포스터상** at 국방로봇학회 제4회 학술대회 — 사족보행로봇을 활용한 통신 지연없는 지하 자율정찰 기술 연구."
+
+- date: "2024.09"
+  hidden: false
+  text: "**최우수상** at 2024 국방부장관배 드론봇챌린지 감시정찰분야 — 통신음영지역에서의 사족보행로봇 자율탐사."
+
+- date: "2023.08"
+  hidden: false
+  text: "**최우수상** at 2023 국방부장관배 드론봇챌린지 감시정찰분야 — 원격조종을 통한 사족보행 운용 가능성 검증."
+
+- date: "2023.05"
+  hidden: false
+  text: "Joined **Korea Robot Manufacturing (KRM)** as Research Engineer, building full-stack autonomous navigation systems for the quadruped robot V60."
+
+- date: "2023.02"
+  hidden: false
+  text: "Received M.S. in Robotics from **KAIST**. [Thesis](https://drive.google.com/file/d/12mFpgonBKgskiwGZHS_wzDNQ8Lla5IW0/preview) on collision-backpropagation based obstacle avoidance for legged robots."
+
+- date: "2022.10"
+  hidden: true
+  text: "Paper accepted at **ICCAS 2022** — Collision-backpropagation based obstacle avoidance method for a legged robot."
+
+- date: "2019.06"
+  hidden: true
+  text: "Joined **KIST** (Center for Intelligent & Interactive Robotics) as Student Researcher."

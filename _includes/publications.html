@@ -1,0 +1,54 @@
+<section id="publications">
+  <div class="section-header">
+    <h2 class="section-title">Publications</h2>
+    <div class="pub-filter" role="group">
+      <button class="pub-filter-btn active" data-filter="all">All</button>
+      <button class="pub-filter-btn" data-filter="international">International</button>
+      <button class="pub-filter-btn" data-filter="domestic">Domestic</button>
+    </div>
+  </div>
+
+  {% assign sorted_pubs = site.data.publications | sort: "sort_key" | reverse %}
+  <ul class="pub-list">
+    {% for pub in sorted_pubs %}{% if pub.hidden %}{% continue %}{% endif %}
+    <li class="pub-item" data-type="{{ pub.type }}">
+      {% if pub.thumb and pub.thumb != "" %}
+        <img class="pub-thumb" src="{{ pub.thumb | relative_url }}" alt="{{ pub.title }}">
+      {% else %}
+        <div class="pub-thumb"></div>
+      {% endif %}
+
+      <div class="pub-body">
+        <div class="pub-title">
+          {% if pub.links.project and pub.links.project != "" %}
+            <a href="{{ pub.links.project | relative_url }}">{{ pub.title }}</a>
+          {% else %}
+            {{ pub.title }}
+          {% endif %}
+        </div>
+        <div class="pub-authors">{{ pub.authors | markdownify | remove: '<p>' | remove: '</p>' }}</div>
+        <div class="pub-venue">{{ pub.venue }}</div>
+        <div class="pub-links">
+          {% if pub.links.paper  and pub.links.paper  != "" %}<a href="{{ pub.links.paper  }}" target="_blank"><i class="fa-regular fa-file-lines"></i> Paper</a>{% endif %}
+          {% if pub.links.video  and pub.links.video  != "" %}<a href="{{ pub.links.video  }}" target="_blank"><i class="fa-brands fa-youtube"></i> Video</a>{% endif %}
+          {% if pub.links.code   and pub.links.code   != "" %}<a href="{{ pub.links.code   }}" target="_blank"><i class="fa-brands fa-github"></i> Code</a>{% endif %}
+          {% if pub.links.project and pub.links.project != "" %}<a href="{{ pub.links.project | relative_url }}"><i class="fa-solid fa-arrow-up-right-from-square"></i> Project</a>{% endif %}
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<script>
+  document.querySelectorAll('.pub-filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.pub-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.pub-item').forEach(item => {
+        item.style.display = (filter === 'all' || item.dataset.type === filter) ? '' : 'none';
+      });
+    });
+  });
+</script>

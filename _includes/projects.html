@@ -1,0 +1,22 @@
+<section id="projects">
+  <h2 class="section-title">Projects</h2>
+  <div class="project-grid">
+    {% assign sorted_projects = site.projects | sort: 'date' | reverse %}
+    {% for project in sorted_projects %}
+    <a class="project-card" href="{{ project.url | relative_url }}">
+      {% if project.thumb and project.thumb != "" %}
+        <img class="project-thumb" src="{{ project.thumb | relative_url }}" alt="{{ project.title }}">
+      {% else %}
+        <div class="project-thumb"></div>
+      {% endif %}
+      <div class="project-body">
+        <div class="project-title-row">
+          <span class="project-title">{{ project.title }}</span>
+          <span class="project-date">{{ project.date | date: "%Y.%m" }}</span>
+        </div>
+        <div class="project-desc">{{ project.description }}</div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>

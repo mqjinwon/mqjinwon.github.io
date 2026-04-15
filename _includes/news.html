@@ -1,0 +1,13 @@
+<section id="news">
+  <h2 class="section-title">News</h2>
+  <ul class="news-list">
+    {% assign sorted_news = site.data.news | sort: "date" | reverse %}
+    {% assign first_shown = true %}
+    {% for item in sorted_news %}{% if item.hidden %}{% continue %}{% endif %}
+    <li>
+      <span class="news-date">{{ item.date }}</span>
+      <span>{% if first_shown %}🎉 {% assign first_shown = false %}{% endif %}{{ item.text | markdownify | remove: '<p>' | remove: '</p>' }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</section>

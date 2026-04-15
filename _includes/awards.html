@@ -1,0 +1,15 @@
+<section id="awards">
+  <h2 class="section-title">Awards &amp; Patents</h2>
+  <ul class="award-list">
+    {% assign sorted_awards = site.data.awards | sort: "year" | reverse %}
+    {% for award in sorted_awards %}{% if award.hidden %}{% continue %}{% endif %}
+    <li class="award-item">
+      <span class="award-year">{{ award.year }}</span>
+      <div class="award-body">
+        <div class="award-title">{{ award.title }}</div>
+        <div class="award-meta">{{ award.org }}{% if award.desc and award.desc != "" %} · {{ award.desc }}{% endif %}</div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
